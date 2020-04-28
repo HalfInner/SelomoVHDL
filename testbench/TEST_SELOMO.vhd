@@ -97,10 +97,14 @@ begin
 
     r_operations <= t_add_one;
     wait for r_clk_period * 5;
+    r_operations <= t_stop;
+    wait for r_clk_period; -- stabilizing output
     assert r_result = t_odd report "Initial state must be odd/5" severity error;
 
     r_operations <= t_shift_right;
     wait for r_clk_period;
+    r_operations <= t_stop;
+    wait for r_clk_period; -- stabilizing output
     assert r_result = t_even report "Initial state must be even/2" severity error;
 
     r_operations <= t_stop;
@@ -109,18 +113,26 @@ begin
 
     r_rst <= '0';
     wait for r_clk_period;
+    r_operations <= t_stop;
+    wait for r_clk_period; -- stabilizing output
     assert r_result = t_even report "Initial state must be even/0" severity error;
 
     r_operations <= t_substract_one;
     wait for r_clk_period;
+    r_operations <= t_stop;
+    wait for r_clk_period; -- stabilizing output
     assert r_result = t_odd report "Initial state must be even/11" severity error;
 
     r_operations <= t_shift_right;
     wait for r_clk_period;
+    r_operations <= t_stop;
+    wait for r_clk_period; -- stabilizing output
     assert r_result = t_odd report "Initial state must be even/5" severity error;
 
     r_operations <= t_shift_right;
     wait for r_clk_period;
+    r_operations <= t_stop;
+    wait for r_clk_period; -- stabilizing output
     assert r_result = t_even report "Initial state must be even/2" severity error;
 
     wait;
