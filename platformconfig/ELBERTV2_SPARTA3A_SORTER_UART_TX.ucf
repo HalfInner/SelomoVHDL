@@ -4,10 +4,10 @@
 CONFIG VCCAUX = "3.3" ;
  
  # Clock 12 MHz
-NET "CLK"                  LOC = P129 | IOSTANDARD = LVCMOS33 | PERIOD = 12MHz;
-NET "RST"                  LOC = P76  | IOSTANDARD = LVCMOS33 | DRIVE = 12 | SLEW = FAST | PULLUP;
+NET "I_CLK"                  LOC = P129 | IOSTANDARD = LVCMOS33 | PERIOD = 12MHz;
+NET "I_RST"                  LOC = P76  | IOSTANDARD = LVCMOS33 | DRIVE = 12 | SLEW = FAST | PULLUP;
 
-NET "UART_TX"              LOC = P31 | IOSTANDARD = lvttl | DRIVE = 12 | SLEW = SLOW;
-NET "UART_RX"              LOC = P28 | IOSTANDARD = lvttl;
+NET "I_UART_RX"              LOC = P28 | IOSTANDARD = lvttl;
 
-NET "LED_CONTROL"          LOC = P55 |  IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST;
+NET "O_LED_CONTROL"          LOC = P55 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST;
+NET "O_LED_SELOMO"           LOC = P54 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST;

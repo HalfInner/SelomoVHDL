@@ -34,7 +34,6 @@ library IEEE;
 
 entity SELOMO_UI is
   port (
-    O_UART_TX            : out   std_logic;
     I_UART_RX            : in    std_logic;
 
     O_LED_CONTROL        : out   std_logic;

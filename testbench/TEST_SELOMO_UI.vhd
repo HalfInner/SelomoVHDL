@@ -42,7 +42,6 @@ architecture BEHAVIOR of TEST_SELOMO_UI is
 
   component SELOMO_UI is
     port (
-      O_UART_TX     : out   std_logic;
       I_UART_RX     : in    std_logic;
       O_LED_CONTROL : out   std_logic;
       O_LED_SELOMO  : out   std_logic;
@@ -54,7 +53,6 @@ architecture BEHAVIOR of TEST_SELOMO_UI is
   signal r_clk : std_logic := '0';
   signal r_rst : std_logic := '0';
 
-  signal w_uart_tx : std_logic;
   signal r_uart_rx : std_logic := '1';
   signal w_led_control : std_logic;
   signal w_led_selomo : std_logic;
@@ -100,7 +98,6 @@ BEGIN
 
 -- Instantiate the Unit Under Test (UUT)
    uut: SELOMO_UI PORT MAP (
-          O_UART_TX => w_uart_tx,
           I_UART_RX => r_uart_rx,
           O_LED_CONTROL => w_led_control,
           O_LED_SELOMO => w_led_selomo,
