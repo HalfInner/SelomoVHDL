@@ -86,15 +86,15 @@ architecture BEHAVIOR of TEST_SELOMO_UI is
     for ii in 0 to 7 loop
       o_serial <= i_data_in(ii);
       wait for c_BIT_PERIOD;
-  end loop;  -- ii
+    end loop;  -- ii
 
   -- Send Stop Bit
-  o_serial <= '1';
-  wait for c_BIT_PERIOD;
+    o_serial <= '1';
+    wait for c_BIT_PERIOD;
 
-  assert false report "Check finish one frame time stamp" severity warning;
+    assert false report "Check finish one frame time stamp" severity warning;
 
-end architecture PROCEDURE UART_WRITE_BYTE;
+  end PROCEDURE UART_WRITE_BYTE;
 
 BEGIN
 
