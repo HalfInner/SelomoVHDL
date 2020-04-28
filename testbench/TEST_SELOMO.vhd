@@ -51,7 +51,7 @@ architecture BEHAVIOR of TEST_SELOMO is
   end component;
 
   --Inputs
-  signal r_operations : t_selomo_operation;
+  signal r_operations : t_selomo_operation := t_stop;
   signal r_clk        : std_logic := '0';
   signal r_rst        : std_logic := '0';
 
@@ -90,9 +90,38 @@ begin
     -- hold reset state for 100 ns.
     wait for 100 ns;
 
-    wait for r_clk_period * 10;
-
     -- insert stimulus here
+
+    wait for r_clk_period;
+    assert r_result = t_even report "Initial state must be even/zero" severity error;
+
+    r_operations <= t_add_one;
+    wait for r_clk_period * 5;
+    assert r_result = t_odd report "Initial state must be odd/5" severity error;
+
+    r_operations <= t_shift_right;
+    wait for r_clk_period;
+    assert r_result = t_even report "Initial state must be even/2" severity error;
+
+    r_operations <= t_stop;
+    r_rst        <= '1';
+    wait for r_clk_period * 5;
+
+    r_rst <= '0';
+    wait for r_clk_period;
+    assert r_result = t_even report "Initial state must be even/0" severity error;
+
+    r_operations <= t_substract_one;
+    wait for r_clk_period;
+    assert r_result = t_odd report "Initial state must be even/11" severity error;
+
+    r_operations <= t_shift_right;
+    wait for r_clk_period;
+    assert r_result = t_odd report "Initial state must be even/5" severity error;
+
+    r_operations <= t_shift_right;
+    wait for r_clk_period;
+    assert r_result = t_even report "Initial state must be even/2" severity error;
 
     wait;
 
