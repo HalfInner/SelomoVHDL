@@ -86,7 +86,7 @@ architecture BEHAVIOR of TEST_SELOMO_UI is
       wait for c_BIT_PERIOD;
     end loop;  -- ii
 
-  -- Send Stop Bit
+    -- Send Stop Bit
     o_serial <= '1';
     wait for c_BIT_PERIOD;
 
