@@ -18,8 +18,7 @@ library ieee;
 
 entity UART_RX is
   generic (
-    G_CLKS_PER_BIT : integer := 1250     -- Needs to be set correctly
-    --    G_CLKS_PER_BIT : integer := 3     -- Needs to be set correctly in UUT
+    G_CLKS_PER_BIT : integer := 1250      -- Needs to be set correctly
   );
   port (
     I_CLK       : in    std_logic;
